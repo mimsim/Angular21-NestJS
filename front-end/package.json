@@ -16,8 +16,12 @@
     "@angular/forms": "^20.0.0",
     "@angular/platform-browser": "^20.0.0",
     "@angular/router": "^20.0.0",
+    "@nestjs/typeorm": "^11.0.0",
+    "pg": "^8.20.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "sqlite3": "^6.0.1",
+    "tslib": "^2.3.0",
+    "typeorm": "^0.3.6"
   },
   "devDependencies": {
     "@angular/build": "^20.0.1",
