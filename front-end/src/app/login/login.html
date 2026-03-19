@@ -1,0 +1,21 @@
+<div class="login-container">
+    <mat-card>       
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Имейл</mat-label>
+                <input matInput formControlName="email" type="email" placeholder="example@mail.com">
+                <mat-icon matSuffix>email</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width">
+                <mat-label>Парола</mat-label>
+                <input matInput formControlName="password" type="password">
+                <mat-icon matSuffix>lock</mat-icon>
+            </mat-form-field>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
+                    Влез
+                </button>
+            </mat-card-actions>
+        </form>
+    </mat-card>
+</div>
