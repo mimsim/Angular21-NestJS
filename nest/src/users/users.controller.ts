@@ -30,6 +30,7 @@ export class UsersController {
         return this.authService.signin(body.email, body.password).pipe(
             tap(user => {
                 session.userId = user.id; 
+                console.log(session)
             })
         );
     }

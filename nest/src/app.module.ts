@@ -28,12 +28,28 @@ const cookieSession = require('cookie-session');
   controllers: [AppController],
   providers: [AppService],
 })
+// export class AppModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer
+//       .apply(
+//         cookieSession({
+//           keys: ['asdfasfd'],
+//         }),
+//       )
+//       .forRoutes('*');
+//   }
+// }
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(
         cookieSession({
+          name: 'session',
           keys: ['asdfasfd'],
+          maxAge: 24 * 60 * 60 * 1000,
+          secure: false,
+          httpOnly: true,
+          sameSite: 'lax',
         }),
       )
       .forRoutes('*');

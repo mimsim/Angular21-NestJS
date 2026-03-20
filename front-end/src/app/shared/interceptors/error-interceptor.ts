@@ -4,16 +4,18 @@ import { catchError, throwError } from 'rxjs';
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      let errorMessage = 'error';
-      if (error.status === 401) {
-        errorMessage = 'Неоторизиран достъп - моля, влезте отново.';
-      } else if (error.status === 404) {
-        errorMessage = 'Ресурсът не е намерен.';
+      let errorMessage = 'Възникна грешка';
+
+      if (error.status === 400) {
+        // NestJS изпраща грешките в error.error.message
+        const validationErrors = error.error.message;
+        errorMessage = `Грешка при валидация: ${Array.isArray(validationErrors) ? validationErrors.join(', ') : validationErrors}`;
+      } else if (error.status === 401) {
+        errorMessage = 'Неоторизиран достъп.';
       }
 
-      console.error(errorMessage);
+      console.error('ПОДРОБНА ГРЕШКА:', error.error); // ТОВА ЩЕ ТИ КАЖЕ ВСИЧКО
       return throwError(() => new Error(errorMessage));
-    }
-    )
-  )
+    })
+  );
 };
