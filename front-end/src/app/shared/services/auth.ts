@@ -6,8 +6,12 @@ import { inject, Injectable } from '@angular/core';
 })
 export class Auth {
   private http = inject(HttpClient);
-  url = `http://localhost:3000/auth`
+  url = `http://localhost:3000/auth`;
+  
   login(formValue: any) {
-    return this.http.post(`${this.url}/signin`, formValue,{ withCredentials: true })
+    return this.http.post(`${this.url}/login`, formValue,{ withCredentials: true })
+  }
+  register(formValue: any) {
+    return this.http.post(`${this.url}/register`, formValue, { withCredentials: true })
   }
 }

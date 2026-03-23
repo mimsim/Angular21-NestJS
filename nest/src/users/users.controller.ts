@@ -17,7 +17,7 @@ export class UsersController {
         session.userId = null;
     }
 
-    @Post('/signup')
+    @Post('/register')
     createUser(@Body() body: CreateUserDto, @Session() session: any) {
         return this.authService.signup(body.email, body.password).pipe(
             tap(user => {
@@ -25,7 +25,7 @@ export class UsersController {
             })
         );
     }
-    @Post('/signin')
+    @Post('/login')
     signin(@Body() body: CreateUserDto, @Session() session: any) {
         return this.authService.signin(body.email, body.password).pipe(
             tap(user => {

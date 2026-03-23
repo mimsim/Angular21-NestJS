@@ -1,7 +1,7 @@
-<div class="login-container">
-    <mat-card>   
-        <h2>Вход</h2>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<div class="register-container">
+    <mat-card>
+        <h2>Регистрация</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline" class="full-width">
                 <mat-label>Имейл</mat-label>
                 <input matInput formControlName="email" type="email" placeholder="example@mail.com">
@@ -13,17 +13,16 @@
                 <mat-icon matSuffix>lock</mat-icon>
             </mat-form-field>
             <mat-card-actions>
-                <button mat-raised-button color="primary" type="submit" [disabled]="loginForm.invalid">
-                    Влез
+                <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+                    Регистрация
                 </button>
             </mat-card-actions>
-        </form>        
+        </form>
         <div class="column">
-                <div>
-                    <h4>Ако не сте регистраран</h4>
-                </div>
-               
-            <button matButton routerLink="/register">Регистрация</button>
+            <div>
+                <h4>Ако вече имате регистрация</h4>
+            </div>
+            <button matButton routerLink="/login">Към вход</button>
         </div>
     </mat-card>
 </div>
