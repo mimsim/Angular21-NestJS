@@ -12,6 +12,7 @@ async function bootstrap() {
     origin: 'http://localhost:4200',
     credentials: true,
   });
+  app.getHttpAdapter()?.getInstance().disable('etag');
 
   await app.listen(process.env.PORT ?? 3000);
 }
