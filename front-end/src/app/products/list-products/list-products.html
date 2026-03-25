@@ -1,13 +1,13 @@
 <ng-container>
     @if (products){
-    @for (item of products; track item.id) {
-    <mat-card>
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.description }}</p>
-    </mat-card>
-    }
-    @empty {
-    <mat-card>Няма продукти</mat-card>
-    }
+        @for (item of products; track item.id) {
+        <mat-card>
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.description }}</p>
+        </mat-card>
+        }
+        @empty {
+        <mat-card>Няма продукти</mat-card>
+        }
     }
 </ng-container>
