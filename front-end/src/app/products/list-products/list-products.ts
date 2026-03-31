@@ -1,32 +1,28 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { Products } from '../../shared/services/products';
+import { Component, inject } from '@angular/core';
+import { ProductService } from '../../shared/services/products';
 import { MATERIAL_MODULES } from '../../material.providers';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { IProduct } from '../../shared/interfaces/product-interface';
+import { ProductComponent } from '../product/product';
+
 
 @Component({
   selector: 'app-list-products',
   imports: [
     CommonModule,
-    ...MATERIAL_MODULES],
+    ...MATERIAL_MODULES,
+    RouterModule,
+    ProductComponent
+  ],
   templateUrl: './list-products.html',
   styleUrl: './list-products.scss',
 })
-export class ListProducts implements OnInit{
-  private productService = inject(Products)
-  products: any;
+export class ListProducts {
+  private productService = inject(ProductService);
 
-  ngOnInit() {
-    this.fetchProducts();
-  }
-
-  fetchProducts() {
-   return this.productService.getAllProducts()
-      .subscribe({
-        next: (data) => {
-          this.products = data
-          console.log('this.products', this.products)
-        },
-        error: (err) => console.error('Error fetching products', err)
-      });
-  }
+  products = toSignal(this.productService.getAllProducts(), {
+    initialValue: [] as IProduct[]
+  });
 }

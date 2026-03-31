@@ -1,0 +1,16 @@
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+    background: #e7dcdc;
+    color: white;
+}
+
+.active {
+    border-bottom: 2px solid white;
+}
+
+button {
+    cursor: pointer;
+    margin-left: 10px;
+}

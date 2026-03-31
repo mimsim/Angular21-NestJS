@@ -1,0 +1,13 @@
+<nav class="header-nav">
+    <div class="logo" routerLink="/">My App</div>
+
+    <div class="menu">
+        @if (isLoggedIn()) {
+        <span> {{ userName() }}</span>
+        <button mat-flat-button color="primary" (click)="logout()">Изход</button>
+        } @else {
+        <a routerLink="/login" routerLinkActive="active">Вход</a>
+        <a routerLink="/register" routerLinkActive="active">Регистрация</a>
+        }
+    </div>
+</nav>

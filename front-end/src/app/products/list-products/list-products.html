@@ -1,13 +1,12 @@
 <ng-container>
-    @if (products){
-        @for (item of products; track item.id) {
-        <mat-card>
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.description }}</p>
-        </mat-card>
-        }
-        @empty {
-        <mat-card>Няма продукти</mat-card>
-        }
+    @for (product of products(); track product.id) {
+    <app-product [item]="product" />
+    <div class="actions">
+        <button mat-flat-button color="primary" [routerLink]="['/products', product.id]">
+            Виж детайли
+        </button>
+    </div>
+    } @empty {
+    <mat-card>Няма налични продукти</mat-card>
     }
 </ng-container>
