@@ -18,6 +18,7 @@ export class Header {
 
   user = this.authService.currentUser;
   isLoggedIn = computed(() => !!this.user());
+  
   userName = computed(() => {
     this.user()?.email || '',
       console.log('this.user()', this.user()?.email)

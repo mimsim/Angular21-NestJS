@@ -3,7 +3,7 @@
 
     <div class="menu">
         @if (isLoggedIn()) {
-        <span> {{ userName() }}</span>
+        <span> {{ this.user()?.email }}</span>
         <button mat-flat-button color="primary" (click)="logout()">Изход</button>
         } @else {
         <a routerLink="/login" routerLinkActive="active">Вход</a>

@@ -1,0 +1,13 @@
+@if (toastService.message()) {
+<div class="toast-wrapper" [class]="toastService.type()">
+<div class="toast-icon">
+    @if (toastService.type() === 'success') { ✔ }
+    @if (toastService.type() === 'error') { ✖ }
+    @if (toastService.type() === 'info') { ℹ }
+    <div class="toast-content">
+        <div class="toast-title">{{ toastService.type() | titlecase }}</div>
+        <div class="toast-message">{{ toastService.message() }}</div>
+    </div>
+</div>
+</div>
+}
