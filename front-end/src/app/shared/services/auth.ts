@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { BROWSER_TOKEN } from '../../core/storage.token';
 import { tap } from 'rxjs';
 import { IUser } from '../interfaces/user-interface';
@@ -17,7 +17,8 @@ export class Auth {
     private router = inject(Router)
     
     currentUser = signal<IUser | null>(JSON.parse(this.storage.getItem('user_data') || 'null'));
-
+    isAdmin = computed(() => !!this.currentUser()?.admin)
+    
     login(formValue: any) {
         return this.http.post(`${this.url}/login`, formValue, { withCredentials: true })
             .pipe(

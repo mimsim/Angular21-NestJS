@@ -14,11 +14,12 @@ import { MATERIAL_MODULES } from '../../material.providers';
 })
 export class Header {
 
-  private authService = inject(Auth);
+  authService = inject(Auth);
 
   user = this.authService.currentUser;
   isLoggedIn = computed(() => !!this.user());
-  
+  currentUser = this.authService.currentUser;
+  isAdmin = computed(() => !!this.currentUser()?.admin);
   userName = computed(() => {
     this.user()?.email || '',
       console.log('this.user()', this.user()?.email)

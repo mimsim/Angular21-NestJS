@@ -1,0 +1,44 @@
+.admin-container {
+    padding: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .table-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 24px;
+
+        h1 {
+            margin: 0;
+            font-weight: 300;
+        }
+    }
+}
+
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table {
+    width: 100%;
+}
+
+.spinner-container {
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+// Потребителски стил за Админ чипа
+.admin-chip {
+    background-color: #e3f2fd !important;
+    color: #1976d2 !important;
+    font-weight: 600;
+}
+
+.mat-column-actions {
+    text-align: right;
+    width: 80px;
+}

@@ -3,6 +3,9 @@
 
     <div class="menu">
         @if (isLoggedIn()) {
+            @if(isAdmin()){
+                <a routerLink="/admin/users" class="admin-badge">Админ Панел</a>
+            }
         <span> {{ this.user()?.email }}</span>
         <button mat-flat-button color="primary" (click)="logout()">Изход</button>
         } @else {
