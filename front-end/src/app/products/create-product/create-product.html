@@ -1,0 +1,23 @@
+<div class="product-form-card mat-elevation-z3">
+    <h3>Нов Продукт </h3>
+    <form [formGroup]="productForm" (ngSubmit)="submitProductForm()">
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Заглавие (Title)</mat-label>
+            <input matInput formControlName="title" placeholder="напр. MacBook Pro">
+            @if (productForm.get('title')?.invalid && productForm.get('title')?.touched) {
+            <mat-error>Заглавието е твърде кратко</mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="w-100">
+            <mat-label>Описание</mat-label>
+            <textarea matInput formControlName="description" rows="4"></textarea>
+        </mat-form-field>
+
+        <div class="actions">
+            <button mat-flat-button color="primary" type="submit" [disabled]="productForm.invalid || isSubmitting()">
+                {{ isSubmitting() ? 'Записване...' : 'Създай Продукт' }}
+            </button>
+        </div>
+    </form>
+</div>

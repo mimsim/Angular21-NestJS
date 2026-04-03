@@ -26,4 +26,7 @@ export class ProductService {
 		return this.http.get<IProduct>(`${this.url}/${id}`).pipe(
 			tap(data => console.log('Данни от сървъра:', data)) );
 	}
+	createProduct(productData: IProduct) {
+		return this.http.post<IProduct>(`${this.url}/item`, productData)
+	}
 }

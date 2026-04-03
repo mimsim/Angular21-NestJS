@@ -1,4 +1,7 @@
 <ng-container>
+    <button mat-raised-button color="accent" (click)="openCreateDialog()">
+        <mat-icon>add</mat-icon> Добави продукт
+    </button>
     @for (product of products(); track product.id) {
     <app-product [item]="product" />
     <div class="actions">

@@ -2,8 +2,8 @@ POST http://localhost:3000/products/item
 content-type: application/json
 
 {
-  "title": "Test 2 ",
-  "description": "Second description - Lorem Ipsum"
+  "title": "Test 3 ",
+  "description": "Product description - Lorem Ipsum"
 }
 
 ### Approve an existing report
