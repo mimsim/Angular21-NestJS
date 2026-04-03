@@ -25,6 +25,6 @@ export class UserService {
   }
   deleteUserById(id: any) {
     this.isLoading.set(true);
-    this.http.delete(`${this.apiUrl}/auth/${id}`)
+    return this.http.delete(`${this.apiUrl}/auth/${id}`)
   }
 }

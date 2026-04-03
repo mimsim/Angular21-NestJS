@@ -21,7 +21,7 @@ export class UsersController {
     createUser(@Body() body: CreateUserDto, @Session() session: any) {
         return this.authService.signup(body.email, body.password).pipe(
             tap(user => {
-                session.userId = user.id; 
+                session.userId = user.id;
             })
         );
     }
@@ -29,7 +29,7 @@ export class UsersController {
     signin(@Body() body: CreateUserDto, @Session() session: any) {
         return this.authService.signin(body.email, body.password).pipe(
             tap(user => {
-                session.userId = user.id; 
+                session.userId = user.id;
                 console.log(session)
             })
         );
@@ -42,7 +42,8 @@ export class UsersController {
                 if (!user) {
                     return throwError(() => new NotFoundException('user not found'));
                 }
-                return [user]; 
+                console.log('user', user)
+                return [user];
             })
         );
     }
@@ -56,9 +57,15 @@ export class UsersController {
         return this.usersService.remove(parseInt(id));
     }
 
-    @Patch('/:id')
-    updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
-        return this.usersService.update(parseInt(id), body);
+    // @Patch('/:id')
+    // updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+    //     return this.usersService.update(parseInt(id), body);
+    // }
+    @Patch(':id')
+    async updateUser(@Param('id') id: string, @Body() body: UpdateUserDto) {
+        const user = await this.usersService.update(parseInt(id), body);
+        console.log(user)
+        return user;
     }
 }
 

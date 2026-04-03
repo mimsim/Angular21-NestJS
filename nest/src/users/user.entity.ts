@@ -12,7 +12,7 @@ export class User {
     @Column()
     password: string;
 
-    @Column({ default: true })
+    @Column({ type: 'boolean', default: false })
     admin: boolean;
 
     @OneToMany(() => Product, (product) => product.user)
