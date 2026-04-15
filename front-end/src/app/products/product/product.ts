@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
-import { Component, computed, inject, input } from '@angular/core';
+import { Component, computed, inject, input, OnInit } from '@angular/core';
 import { MATERIAL_MODULES } from '../../material.providers';
-import { RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { ProductService } from '../../shared/services/products';
 import { IProduct } from '../../shared/interfaces/product-interface';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -16,25 +16,39 @@ import { of, switchMap } from 'rxjs';
   templateUrl: './product.html',
   styleUrl: './product.scss',
 })
-export class ProductComponent {
+export class ProductComponent implements OnInit{
   private productService = inject(ProductService);
+  item = input<IProduct>();
+  id = input<string>();
 
-  // Входове
-  item = input<IProduct>(); // Идва от списъка
-  id = input<string>();    // Идва от URL (при детайлна страница)
+  private router = inject(Router);
 
-  // Ако имаме 'id' от URL, теглим данните. Ако имаме 'item', ползваме него.
+  isEditMode = false;
+
   product = computed(() => {
-    const currentItem = this.item();
+    const currentItem = this.item(); 
+    const fetched = this.fetchedProduct(); 
     if (currentItem) return currentItem;
-
-    // Тук използваме fetchedProduct, който дефинирахме по-рано
-    return this.fetchedProduct();
+    return fetched;
   });
-
   private fetchedProduct = toSignal(
     toObservable(this.id).pipe(
       switchMap(id => id ? this.productService.getProductById(id) : of(null))
-    )
+    )    
   );
+  ngOnInit() {
+    console.log('ID от URL:', this.id());
+    console.log('Item от родител:', this.item());
+  }
+  delete() {   
+    if (confirm('Сигурен ли си')) {
+      this.productService.deleteProductById(this.id()).subscribe(() => {
+        this.fetchedProduct()
+        this.router.navigate(['/products'])
+      })
+    }
+  }
+  edit() {
+   
+  }
 }

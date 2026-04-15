@@ -1,4 +1,7 @@
 <div class="product-form-card mat-elevation-z3">
+    <button mat-icon-button mat-dialog-close class="close-button">
+        <mat-icon>close</mat-icon>
+    </button>
     <h3>Нов Продукт </h3>
     <form [formGroup]="productForm" (ngSubmit)="submitProductForm()">
         <mat-form-field appearance="fill" class="w-100">

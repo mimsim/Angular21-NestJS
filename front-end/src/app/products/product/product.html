@@ -4,9 +4,18 @@
     <p>{{ p.description }}</p>
 
     @if (id()) {
-    <button mat-raised-button color="primary" routerLink="/products">
-        Назад
-    </button>
+        <div class="row">
+
+            <button mat-raised-button color="primary" routerLink="/products">
+                Назад
+            </button>
+            <button mat-raised-button color="warn" (click)="delete()">
+                delete
+            </button>
+            <button mat-raised-button color="secondary" (click)="edit()">
+                edit
+            </button>
+        </div>
     }
     } @else {
     <div class="loading-shade">

@@ -13,6 +13,7 @@ export const routes: Routes = [
     { path: 'register', component: Register },
     { path: 'products', component: Dashboard },
     { path: 'products/:id', component: ProductComponent },
+    { path: 'products/edit/:id', component: ProductComponent },
     {
         path: 'admin',
         canActivate: [authGuard],
