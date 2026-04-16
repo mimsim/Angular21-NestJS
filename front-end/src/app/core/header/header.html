@@ -1,5 +1,9 @@
 <nav class="header-nav">
-    <a routerLink="/" routerLinkActive="active" lass="logo">My App</a>
+    @if (isLoggedIn()) {
+    <a routerLink="/dashboard" routerLinkActive="active" lass="logo">My App</a>
+    }@else{
+        <a routerLink="/" routerLinkActive="active" lass="logo">My App</a>
+    }
     <div class="menu">
         @if (isLoggedIn()) {
         @if(isAdmin()){
@@ -12,4 +16,5 @@
         <a routerLink="/register" routerLinkActive="active">Регистрация</a>
         }
     </div>
+    <mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon>
 </nav>

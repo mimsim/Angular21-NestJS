@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { Auth } from '../../shared/services/auth';
 import { MATERIAL_MODULES } from '../../material.providers';
@@ -11,6 +11,7 @@ import { MATERIAL_MODULES } from '../../material.providers';
   ...MATERIAL_MODULES],
   templateUrl: './header.html',
   styleUrl: './header.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
 

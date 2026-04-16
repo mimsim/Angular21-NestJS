@@ -3,12 +3,14 @@
         <mat-icon>add</mat-icon> Добави продукт
     </button>
     @for (product of products(); track product.id) {
+        <div class="container-product">
     <app-product [item]="product" />
     <div class="actions">
         <button mat-flat-button color="primary" [routerLink]="['/products', product.id]">
             Виж детайли
         </button>
     </div>
+</div>
     } @empty {
     <mat-card>Няма налични продукти</mat-card>
     }

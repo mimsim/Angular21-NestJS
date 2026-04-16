@@ -3,7 +3,7 @@
     justify-content: space-between;
     padding: 1rem;
     background: #e7dcdc;
-    color: white;
+    // color: white;
 }
 
 .active {
@@ -13,4 +13,7 @@
 button {
     cursor: pointer;
     margin-left: 10px;
+}
+.demo-icon .mat-icon.demo-icon-green {
+    color: green;
 }
